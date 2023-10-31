@@ -1,10 +1,8 @@
 import { FC, useContext, useEffect, useReducer, useRef } from 'react';
 
-import { useTranslation } from 'next-i18next';
-
 import { useCreateReducer } from '@/hooks/useCreateReducer';
 
-import { getSettings, saveSettings } from '@/utils/app/settings';
+import { getSettings } from '@/utils/app/settings';
 
 import { Settings } from '@/types/settings';
 
@@ -16,12 +14,6 @@ interface Props {
 }
 
 export const SettingDialog: FC<Props> = ({ open, onClose }) => {
-  const { t } = useTranslation('settings');
-  const settings: Settings = getSettings();
-  const { state, dispatch } = useCreateReducer<Settings>({
-    initialState: settings,
-  });
-  const { dispatch: homeDispatch } = useContext(HomeContext);
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -64,7 +56,7 @@ export const SettingDialog: FC<Props> = ({ open, onClose }) => {
             role="dialog"
           >
             <div className="text-lg pb-4 font-bold text-black dark:text-neutral-200">
-              {t('Settings')}
+              {'Settings'}
             </div>
 
             <button

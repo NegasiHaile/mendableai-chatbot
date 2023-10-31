@@ -9,8 +9,6 @@ import {
 } from 'react';
 import toast from 'react-hot-toast';
 
-import { useTranslation } from 'next-i18next';
-
 import { getEndpoint } from '@/utils/app/api';
 import { DEFAULT_OPENAI_MODEL } from '@/utils/app/const';
 import {
@@ -34,8 +32,6 @@ interface Props {
 }
 
 export const Chat = memo(({ stopConversationRef }: Props) => {
-  const { t } = useTranslation('chat');
-
   const {
     state: { selectedConversation, conversations, apiKey, loading },
     handleUpdateConversation,
@@ -226,13 +222,6 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
     [apiKey, conversations, selectedConversation, stopConversationRef],
   );
 
-  const scrollToBottom = useCallback(() => {
-    if (autoScrollEnabled) {
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-      textareaRef.current?.focus();
-    }
-  }, [autoScrollEnabled]);
-
   const handleScroll = () => {
     if (chatContainerRef.current) {
       const { scrollTop, scrollHeight, clientHeight } =
@@ -258,18 +247,6 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
 
   const handleSettings = () => {
     setShowSettings(!showSettings);
-  };
-
-  const onClearAll = () => {
-    if (
-      confirm(t<string>('Are you sure you want to clear all messages?')) &&
-      selectedConversation
-    ) {
-      handleUpdateConversation(selectedConversation, {
-        key: 'messages',
-        value: [],
-      });
-    }
   };
 
   const scrollDown = () => {
@@ -312,16 +289,16 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
   }, [messagesEndRef]);
 
   return (
-    <div className="relative flex-1 overflow-hidden bg-white dark:bg-[#343541]">
+    <div className="relative flex-1 overflow-hidden bg-white bg-gradient-to-b dark:from-[#110323] dark:via-[#080112]  dark:to-[#080112]">
       <div
         className="max-h-full overflow-x-hidden"
         ref={chatContainerRef}
         onScroll={handleScroll}
       >
         {selectedConversation?.messages.length === 0 ? (
-          <div className="mx-auto flex w-[300px] flex-col pt-[15%] h-screen space-y-6 sm:w-[600px]">
+          <div className="mx-auto flex w-[300px] flex-col mt-[15%] space-y-6 sm:w-[600px]">
             <div className="text-center text-4xl font-bold text-black dark:text-white">
-              Welcome to Mendable Chatbot
+              MendableAI Chatbot
             </div>
             <div className="text-center text-lg text-black dark:text-white">
               <div className="mb-2 font-bold">NEAR Founder Co-Pilot</div>
@@ -329,7 +306,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
           </div>
         ) : (
           <>
-            <div className="sticky top-0 z-10 flex justify-center border border-b-neutral-300 bg-neutral-100 py-2 text-sm text-neutral-500 dark:border-none dark:bg-[#444654] dark:text-neutral-200">
+            <div className="sticky top-0 z-10 flex justify-center border border-b-neutral-300 bg-neutral-100 py-2 text-sm text-neutral-500 dark:border-none dark:bg-[#080112] dark:text-neutral-200">
               <p className="font-semibold">
                 {/* {selectedConversation?.name} */}
                 Mendable Chatbot
@@ -355,7 +332,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
             {loading && <ChatLoader />}
 
             <div
-              className="h-[162px] bg-white dark:bg-[#343541]"
+              className="h-[162px] bg-white dark:bg-[#04010A]"
               ref={messagesEndRef}
             />
           </>

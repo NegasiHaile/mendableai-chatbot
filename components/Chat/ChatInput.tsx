@@ -11,6 +11,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { Grid } from 'react-loader-spinner';
 
 import { Message } from '@/types/chat';
 import { Plugin } from '@/types/plugin';
@@ -112,7 +113,7 @@ export const ChatInput = ({
   }, [content]);
 
   return (
-    <div className="absolute bottom-0 left-0 w-full border-transparent bg-gradient-to-b from-transparent via-white to-white pt-6 dark:border-white/20 dark:via-[#343541] dark:to-[#343541] md:pt-2">
+    <div className="absolute bottom-0 left-0 w-full border-transparent bg-gradient-to-b from-transparent via-white to-white pt-6 dark:border-white/20 dark:via-[#04010A] dark:to-[#0A080C] md:pt-2">
       <div className="stretch mx-2 mt-4 flex flex-row gap-3 last:mb-2 md:mx-4 md:mt-[52px] md:last:mb-6 lg:mx-auto lg:max-w-3xl">
         {messageIsStreaming && (
           <button
@@ -134,7 +135,7 @@ export const ChatInput = ({
             </button>
           )}
 
-        <div className="relative mx-2 flex w-full flex-grow flex-col rounded-md border border-none bg-white shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:border-gray-900/50 dark:bg-[#40414F] dark:text-white dark:shadow-[0_0_15px_rgba(0,0,0,0.10)] sm:mx-4">
+        <div className="relative mx-2 flex w-full flex-grow flex-col rounded-md border-none bg-white shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:border-gray-900/50 dark:bg-[#110323] dark:text-white dark:shadow-[0_0_15px_rgba(0,0,0,0.10)] sm:mx-4">
           <textarea
             ref={textareaRef}
             className="m-0 w-full resize-none border-0 bg-transparent p-0 py-4 pr-8 pl-5 text-black dark:bg-transparent dark:text-white md:py-4 focus:outline-none"
@@ -162,7 +163,14 @@ export const ChatInput = ({
             onClick={handleSend}
           >
             {messageIsStreaming ? (
-              <div className="h-4 w-4 animate-spin rounded-full border-t-2 border-neutral-800 opacity-60 dark:border-neutral-100"></div>
+              <Grid
+                height={20}
+                width={20}
+                radius={6}
+                ariaLabel="grid-loading"
+                color="#fff"
+                ms-visible={true}
+              />
             ) : (
               <IconSend size={20} />
             )}
@@ -171,7 +179,7 @@ export const ChatInput = ({
           {showScrollDownButton && (
             <div className="absolute bottom-14 right-0 lg:bottom-2 lg:-right-10">
               <button
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-300 text-gray-800 shadow-md hover:shadow-lg  focus:outline-none focus:ring-1 focus:ring-gray-600 dark:bg-gray-700 dark:hover:opacity-80 dark:text-neutral-200 dark:hover:text-neutral-400"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-300 text-gray-800 shadow-md hover:shadow-lg  focus:outline-none focus:ring-1 focus:ring-gray-600 dark:bg-[#110323] dark:hover:opacity-80 dark:text-neutral-200 dark:hover:text-neutral-400"
                 onClick={onScrollDownClick}
               >
                 <IconArrowDown size={18} />
