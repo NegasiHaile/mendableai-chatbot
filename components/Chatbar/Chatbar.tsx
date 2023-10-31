@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { useTranslation } from 'next-i18next';
 
