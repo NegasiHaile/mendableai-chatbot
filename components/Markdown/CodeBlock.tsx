@@ -3,8 +3,6 @@ import { FC, memo, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
-import { useTranslation } from 'next-i18next';
-
 import {
   generateRandomString,
   programmingLanguages,
@@ -16,7 +14,6 @@ interface Props {
 }
 
 export const CodeBlock: FC<Props> = memo(({ language, value }) => {
-  const { t } = useTranslation('markdown');
   const [isCopied, setIsCopied] = useState<Boolean>(false);
 
   const copyToClipboard = () => {
@@ -38,10 +35,7 @@ export const CodeBlock: FC<Props> = memo(({ language, value }) => {
       3,
       true,
     )}${fileExtension}`;
-    const fileName = window.prompt(
-      t('Enter file name') || '',
-      suggestedFileName,
-    );
+    const fileName = window.prompt('Enter file name' || '', suggestedFileName);
 
     if (!fileName) {
       // user pressed cancel on prompt
@@ -60,7 +54,7 @@ export const CodeBlock: FC<Props> = memo(({ language, value }) => {
     URL.revokeObjectURL(url);
   };
   return (
-    <div className="codeblock relative font-sans text-[16px]">
+    <div className="codeblock relative font-sans text-[16px] bg-[#110323]">
       <div className="flex items-center justify-between py-1.5 px-4">
         <span className="text-xs lowercase text-white">{language}</span>
 
@@ -70,7 +64,7 @@ export const CodeBlock: FC<Props> = memo(({ language, value }) => {
             onClick={copyToClipboard}
           >
             {isCopied ? <IconCheck size={18} /> : <IconClipboard size={18} />}
-            {isCopied ? t('Copied!') : t('Copy code')}
+            {isCopied ? 'Copied!' : 'Copy code'}
           </button>
           <button
             className="flex items-center rounded bg-none p-1 text-xs text-white"

@@ -57,7 +57,7 @@ const Sidebar = <T,>({
   return isOpen ? (
     <div>
       <div
-        className={`fixed top-0 ${side}-0 z-40 flex h-full w-[260px] flex-none flex-col space-y-2 bg-[#202123] p-2 text-[14px] transition-all sm:relative sm:top-0`}
+        className={`fixed top-0 ${side}-0 z-40 flex h-full w-[260px] flex-none flex-col space-y-2 bg-[#0A080C] p-2 text-[14px] transition-all sm:relative sm:top-0`}
       >
         <div className="flex items-center">
           <button
@@ -79,7 +79,7 @@ const Sidebar = <T,>({
           </button>
         </div>
         <Search
-          placeholder={t('Search...') || ''}
+          placeholder={'Search...'}
           searchTerm={searchTerm}
           onSearch={handleSearchTerm}
         />
@@ -105,7 +105,7 @@ const Sidebar = <T,>({
             <div className="mt-8 select-none text-center text-white opacity-50">
               <IconMistOff className="mx-auto mb-3" />
               <span className="text-[14px] leading-normal">
-                {t('No data.')}
+                No Conversation.
               </span>
             </div>
           )}
