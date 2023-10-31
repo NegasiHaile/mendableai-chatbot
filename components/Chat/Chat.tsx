@@ -1,4 +1,3 @@
-import { IconClearAll, IconSettings } from '@tabler/icons-react';
 import {
   MutableRefObject,
   memo,
@@ -13,6 +12,7 @@ import toast from 'react-hot-toast';
 import { useTranslation } from 'next-i18next';
 
 import { getEndpoint } from '@/utils/app/api';
+import { DEFAULT_OPENAI_MODEL } from '@/utils/app/const';
 import {
   saveConversation,
   saveConversations,
@@ -78,7 +78,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
         homeDispatch({ field: 'loading', value: true });
         homeDispatch({ field: 'messageIsStreaming', value: true });
         const chatBody: ChatBody = {
-          model: updatedConversation.model,
+          model: updatedConversation?.model || DEFAULT_OPENAI_MODEL,
           messages: updatedConversation.messages,
           key: apiKey,
           prompt: updatedConversation.prompt,
