@@ -9,7 +9,11 @@ import {
   cleanConversationHistory,
   cleanSelectedConversation,
 } from '@/utils/app/clean';
-import { DEFAULT_SYSTEM_PROMPT, DEFAULT_TEMPERATURE } from '@/utils/app/const';
+import {
+  DEFAULT_OPENAI_MODEL,
+  DEFAULT_SYSTEM_PROMPT,
+  DEFAULT_TEMPERATURE,
+} from '@/utils/app/const';
 import {
   saveConversation,
   saveConversations,
@@ -115,6 +119,7 @@ const Home = ({ serverSideApiKeyIsSet }: Props) => {
 
     const newConversation: Conversation = {
       id: uuidv4(),
+      model: DEFAULT_OPENAI_MODEL,
       name: 'New Conversation',
       messages: [],
       prompt: DEFAULT_SYSTEM_PROMPT,

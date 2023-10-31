@@ -17,8 +17,7 @@ export const ChatbarSettings = () => {
     dispatch: homeDispatch,
   } = useContext(HomeContext);
 
-  const { handleClearConversations, handleImportConversations } =
-    useContext(ChatbarContext);
+  const { handleClearConversations } = useContext(ChatbarContext);
 
   return (
     <div className="flex flex-col items-center space-y-1 border-t border-white/20 pt-1 text-sm pb-20">

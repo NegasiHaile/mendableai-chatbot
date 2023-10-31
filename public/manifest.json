@@ -1,20 +1,20 @@
 {
   "name": "Mendable Chatbot",
-  "short_name": "chatbot-ui",
-  "description": "Mendable Chatbot is an open source chat UI for AI models.",
+  "short_name": "Mendableai-bot",
+  "description": "MendableAI Chatbot is a NEAR Founder Co-Pilot.",
   "icons": [
     {
-      "src": "/favicon-64x64.png",
+      "src": "/mindableai.png",
       "sizes": "64x64",
       "type": "image/png"
     },
     {
-      "src": "/favicon-128x128.png",
+      "src": "/mindableai.png",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "/favicon-256x256.png",
+      "src": "/mindableai.png",
       "sizes": "256x256",
       "type": "image/png"
     }
